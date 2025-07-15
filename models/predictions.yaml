@@ -5,20 +5,20 @@ models:
       occurred_at_col: insert_ts
       entity_key: user
       inputs:
-        - packages/feature_table/entity/user/is_churned_7_days
-        - packages/feature_table/entity/user/days_since_last_seen
-        - packages/feature_table/entity/user/max_timestamp_pages
-        - packages/feature_table/entity/user/max_timestamp_tracks
-        - packages/feature_table/models/rsRandomSQLModel
-        - packages/feature_table/entity/user/random_date_feature
-        - packages/feature_table/entity/user/random_timestamp_feature
-        - packages/feature_table/entity/user/random_tz_aware_feature
-        - packages/feature_table/entity/user/random_tz_unaware_feature
-        - packages/feature_table/entity/user/random_high_cardinal_feature
+        - entity/user/is_churned_7_days
+        - entity/user/days_since_last_seen
+        - entity/user/max_timestamp_pages
+        - entity/user/max_timestamp_tracks
+        - models/rsRandomSQLModel
+        - entity/user/random_date_feature
+        - entity/user/random_timestamp_feature
+        - entity/user/random_tz_aware_feature
+        - entity/user/random_tz_unaware_feature
+        - entity/user/random_high_cardinal_feature
       ml_config:
         data:
           task: regression
-          label_column: packages/feature_table/entity/user/days_since_last_seen
+          label_column: entity/user/days_since_last_seen
           prediction_horizon_days: 7
           eligible_users: days_since_last_seen <= 120
           output_profiles_ml_model: ltv_regression_integration_test
@@ -35,20 +35,20 @@ models:
       entity_key: user
       training_model: models/training_regression_model
       inputs:
-        - packages/feature_table/entity/user/is_churned_7_days
-        - packages/feature_table/entity/user/days_since_last_seen
-        - packages/feature_table/entity/user/max_timestamp_pages
-        - packages/feature_table/entity/user/max_timestamp_tracks
-        - packages/feature_table/models/rsRandomSQLModel
-        - packages/feature_table/entity/user/random_date_feature
-        - packages/feature_table/entity/user/random_timestamp_feature
-        - packages/feature_table/entity/user/random_tz_aware_feature
-        - packages/feature_table/entity/user/random_tz_unaware_feature
-        - packages/feature_table/entity/user/random_high_cardinal_feature
+        - entity/user/is_churned_7_days
+        - entity/user/days_since_last_seen
+        - entity/user/max_timestamp_pages
+        - entity/user/max_timestamp_tracks
+        - models/rsRandomSQLModel
+        - entity/user/random_date_feature
+        - entity/user/random_timestamp_feature
+        - entity/user/random_tz_aware_feature
+        - entity/user/random_tz_unaware_feature
+        - entity/user/random_high_cardinal_feature
       ml_config:
         data:
           task: regression
-          label_column: packages/feature_table/entity/user/days_since_last_seen
+          label_column: entity/user/days_since_last_seen
           prediction_horizon_days: 7
           eligible_users: '*'
           output_profiles_ml_model: ltv_regression_integration_test

@@ -5,6 +5,7 @@ model_folders:
   - models
 entities:
   - name: user
+    id_stitcher: models/user_id_stitcher
     id_types:
       - user_id
       - anonymous_id

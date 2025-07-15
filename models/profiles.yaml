@@ -13,12 +13,14 @@ var_groups:
     entity_key: user
     vars:
       - entity_var:
+          name: max_timestamp_bw_tracks_pages
+          select: CASE WHEN {{user.Var("max_timestamp_tracks")}}>={{user.Var("max_timestamp_pages")}} THEN {{user.Var("max_timestamp_tracks")}} ELSE {{user.Var("max_timestamp_pages")}} END
+      - entity_var:
           name: is_churned_7_days
           select: case when {{user.Var("days_since_last_seen")}} > 7 then 1 else 0 end # Same condition as in the package project
       - entity_var:
           name: days_since_last_seen
           select: "{{macro_datediff('{{user.Var(\"max_timestamp_bw_tracks_pages\")}}')}}"
-          default: 0
       - entity_var:
           name: max_timestamp_tracks
           select: max(timestamp)
