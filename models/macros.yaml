@@ -1,0 +1,22 @@
+macros:
+  - name: macro_datediff
+    inputs:
+      - column
+    value: |
+      {% if warehouse.DatabaseType() == "bigquery" %}
+        {% if !(end_time|isnil) %}
+          date_diff(date('{{end_time.Format("2006-01-02 15:04:05")}}'), date({{column}}), day)
+        {% else %}
+          date_diff(CURRENT_DATE(), date({{column}}), day)
+        {% endif %}
+      {% else %}
+        {% if !(end_time|isnil) %}
+          datediff(day, date({{column}}), date('{{end_time.Format("2006-01-02 15:04:05")}}'))
+        {% else %}
+          datediff(day, date({{column}}), GETDATE())
+        {% endif %}
+      {% endif %}
+  - name: array_agg
+    inputs:
+      - column_name
+    value: "array_agg(distinct {{column_name}})" 
