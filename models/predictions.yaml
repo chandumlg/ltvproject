@@ -1,5 +1,5 @@
 models:
-  - name: training_Regression_model
+  - name: ltv_prediction_model
     model_type: training_model
     model_spec:
       occurred_at_col: insert_ts
@@ -33,7 +33,7 @@ models:
     model_spec:
       occurred_at_col: insert_ts
       entity_key: user
-      training_model: models/training_regression_model
+      training_model: models/ltv_prediction_model
       inputs:
         - entity/user/is_churned_7_days
         - entity/user/days_since_last_seen
@@ -55,7 +55,7 @@ models:
         outputs:
           column_names:
             percentile: percentile_regression_days_since_last_seen
-            score: regression_days_since_last_seen
+            score: predicted_ltv
       features:
-        - name: percentile_regression_days_since_last_seen
+        - name: predicted_ltv
           description: description
