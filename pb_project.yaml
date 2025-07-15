@@ -1,5 +1,5 @@
 name: ltvproject
-schema_version: 88  # Replace with actual version if needed
+schema_version: 89 # Replace with actual version if needed
 connection: schandukeypair
 model_folders:
   - models
